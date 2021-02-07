@@ -11,8 +11,8 @@ class Model(Layer):
         super(Model, self).__init__()
 
         # define layers
-        self.conv_layer_1 = tf.keras.layers.Conv2D(filters=16, kernel_size=3, padding='same', activation='relu', input_shape=(128,128,3))
-        self.conv_layer_1_2 = tf.keras.layers.Conv2D(filters=16, kernel_size=3, padding='same', activation='relu')
+        self.conv_layer_1 = tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='same', activation='relu', input_shape=(128,128,3))
+        self.conv_layer_1_2 = tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='same', activation='relu')
         self.max_pool_layer_1 = tf.keras.layers.MaxPool2D()
 
         self.conv_layer_2 = tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding='same', activation='relu')
