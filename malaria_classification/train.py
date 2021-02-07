@@ -3,7 +3,15 @@ import matplotlib.pyplot as plt
 import tensorflow_datasets as tfds
 import numpy as np
 import time
+import os
 from model import Model
+
+
+def disable_gpu(disable):
+    if disable:
+        os.environ["CUDA_VISIBLE_DEVICES"]="-1" 
+        print("Note: Disabled GPU.")
+
 
 
 def test(model, test_data, loss_function):
@@ -52,11 +60,16 @@ def train_step(model, input, target, loss_function, optimizer):
     return loss
 
 
+# disable gpu
+
+print("Note: Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+disable_gpu(True)
+
 # hyperparameters
 num_epochs = 25
 learning_rate = 0.00008
 running_average_factor = 0.95
-BATCH_SIZE = 12
+BATCH_SIZE = 64
 
 tf.keras.backend.clear_session()
 
